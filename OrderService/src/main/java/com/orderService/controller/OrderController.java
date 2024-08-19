@@ -1,8 +1,13 @@
 package com.orderService.controller;
 
+import com.orderService.converter.OrderDtoConverter;
 import com.orderService.domain.Order;
+import com.orderService.dto.OrderDto;
 import com.orderService.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +17,7 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    private OrderDtoConverter converter;
 
     @PostMapping("/order")
     public Order saveOrder(@RequestBody Order order) {
